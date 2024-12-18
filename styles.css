@@ -1,0 +1,315 @@
+/* Reset and Variables */
+:root {
+    --primary-color: #004d40;
+    --text-light: white;
+    --border-color: #ddd;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --font-main: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    --text-dark: #333;
+    --bg-light: #f9f9f9;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 0 5px rgba(0, 77, 64, 0.2);
+    --transition-default: all 0.3s ease;
+}
+
+body {
+    font-family: var(--font-main);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Header and Footer */
+header, footer {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    text-align: center;
+    padding: var(--spacing-lg);
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* Navigation */
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0;
+}
+
+nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin: 0 var(--spacing-md);
+    padding: var(--spacing-sm);
+    transition: var(--transition-default);
+    border-radius: 4px;
+}
+
+nav a:hover, nav a:focus {
+    opacity: 0.8;
+    outline: 2px solid var(--text-light);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav a:focus-visible {
+    outline: 3px solid var(--text-light);
+    outline-offset: 2px;
+}
+
+/* Table Styles */
+table {
+    width: 90%;
+    margin: var(--spacing-lg) auto;
+    border-collapse: collapse;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid var(--border-color);
+    padding: var(--spacing-md);
+    text-align: center;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Form Elements */
+input {
+    display: block;
+    margin: var(--spacing-md) auto;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0, 77, 64, 0.2);
+}
+
+/* Responsivität */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+    
+    nav a {
+        padding: var(--spacing-md) 0;
+        width: 100%;
+        text-align: center;
+        margin: var(--spacing-sm) 0;
+    }
+    
+    table {
+        width: 100%;
+        font-size: 14px;
+        margin: var(--spacing-md) 0;
+    }
+
+    th, td {
+        padding: var(--spacing-sm);
+    }
+    
+    /* Make table scrollable horizontally */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 var(--spacing-sm);
+    }
+    
+    /* Add visual indicator for scrollable tables */
+    .table-container::after {
+        content: '→';
+        position: absolute;
+        right: var(--spacing-sm);
+        top: 50%;
+        opacity: 0.5;
+        animation: fadeInOut 2s infinite;
+    }
+}
+
+/* Print Styles */
+@media print {
+    header, footer, nav {
+        display: none;
+    }
+
+    body {
+        font-size: 12pt;
+        color: #000;
+    }
+
+    table {
+        width: 100%;
+        box-shadow: none;
+    }
+
+    th, td {
+        border: 1px solid #000;
+    }
+}
+
+/* Add loading state styles */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Add animation keyframes */
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.5; }
+}
+
+/* Table Container Enhancements */
+.table-container {
+    position: relative;
+    margin: var(--spacing-md) auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Sort Buttons */
+.sort-btn {
+    background: none;
+    border: none;
+    padding: var(--spacing-sm);
+    cursor: pointer;
+    color: var(--text-light);
+    transition: var(--transition-default);
+}
+
+.sort-btn::after {
+    content: '↕';
+    margin-left: var(--spacing-sm);
+    opacity: 0.5;
+}
+
+.sort-btn.sort-asc::after {
+    content: '↑';
+    opacity: 1;
+}
+
+.sort-btn.sort-desc::after {
+    content: '↓';
+    opacity: 1;
+}
+
+/* Error Message */
+.error-message {
+    background-color: #f44336;
+    color: white;
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) auto;
+    border-radius: 4px;
+    text-align: center;
+    animation: slideIn 0.3s ease;
+}
+
+/* No Results Message */
+.no-results {
+    padding: var(--spacing-lg) !important;
+    text-align: center;
+    color: var(--text-dark);
+    font-style: italic;
+}
+
+/* Export Button */
+.export-btn {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition-default);
+    margin: var(--spacing-md) 0;
+}
+
+.export-btn:hover {
+    background-color: var(--primary-color-dark);
+}
+
+/* Loading Animation */
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--primary-color);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+}
+
+/* Animations */
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Tooltip */
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]:hover::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--spacing-sm);
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 1;
+}
+  
