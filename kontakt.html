@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de" dir="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt - CO2-Footprint Transparenz</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header mit Logo -->
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <span class="hamburger"></span>
+    </button>
+    <h1>CO2-Footprint Transparenz</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html#home">Startseite</a></li>
+        <li><a href="index.html#daten">Daten</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="kontakt">
+      <h2>Kontakt</h2>
+      <div class="section-content">
+        <div class="contact-info">
+          <h3>So erreichen Sie uns</h3>
+          <p>Haben Sie Fragen oder Anregungen? Wir sind für Sie da!</p>
+          <ul>
+            <li>📧 E-Mail: info@co2-transparenz.org</li>
+            <li>📞 Telefon: +49 (0) 123 456789</li>
+            <li>📍 Adresse: Klimastraße 1, 10115 Berlin</li>
+          </ul>
+        </div>
+        
+        <form class="contact-form">
+          <h3>Kontaktformular</h3>
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Nachricht:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Nachricht senden</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Non-Profit Organisation | Impressum | Datenschutz</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html> 

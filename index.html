@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" dir="auto">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,33 +10,60 @@
   <!-- Header mit Logo -->
   <header>
     <img src="assets/logo.png" alt="Logo" class="logo">
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <span class="hamburger"></span>
+    </button>
     <h1>CO2-Footprint Transparenz</h1>
     <nav>
       <ul>
         <li><a href="#home">Startseite</a></li>
         <li><a href="#daten">Daten</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Content-Bereich -->
   <main>
+    <!-- Home section -->
+    <section id="home">
+      <h2>Willkommen bei CO2-Footprint Transparenz</h2>
+      <p>Wir setzen uns für Transparenz bei CO2-Emissionen ein.</p>
+    </section>
+
+    <!-- Daten section -->
     <section id="daten">
       <h2>CO2-Emissionsdaten</h2>
-      <div class="table-container">
-        <input type="text" id="search" placeholder="Nach Land oder Unternehmen suchen">
-        <button class="export-btn" onclick="exportToCsv()">Export CSV</button>
-        <table id="emissions-table">
-          <thead>
-            <tr>
-              <th><button class="sort-btn" data-column="land">Land</button></th>
-              <th><button class="sort-btn" data-column="unternehmen">Unternehmen</button></th>
-              <th><button class="sort-btn" data-column="emissionen">CO2-Emissionen (t)</button></th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+      <div class="section-content">
+        <p>Unsere Datenbank enthält aktuelle CO2-Emissionswerte von Unternehmen weltweit.</p>
+        <div class="table-container">
+          <div class="controls">
+            <input type="text" id="search" placeholder="Nach Land oder Unternehmen suchen">
+            <button class="export-btn" onclick="exportToCsv()">Export CSV</button>
+          </div>
+          <div class="table-wrapper">
+            <table id="emissions-table">
+              <thead>
+                <tr>
+                  <th><button class="sort-btn" data-column="land">Land</button></th>
+                  <th><button class="sort-btn" data-column="unternehmen">Unternehmen</button></th>
+                  <th><button class="sort-btn" data-column="emissionen">CO2-Emissionen (t)</button></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="data-explanation">
+          <h3>Über unsere Daten</h3>
+          <p>Die hier dargestellten Daten werden monatlich aktualisiert und stammen aus folgenden Quellen:</p>
+          <ul>
+            <li>Offizielle Unternehmensberichte</li>
+            <li>Nationale Umweltbehörden</li>
+            <li>Unabhängige Umweltprüfungen</li>
+          </ul>
+          <p>Alle Emissionswerte werden in metrischen Tonnen CO2-Äquivalent angegeben.</p>
+        </div>
       </div>
     </section>
   </main>
