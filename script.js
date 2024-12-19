@@ -53,10 +53,13 @@ function renderTable(data) {
         tableBody.innerHTML = "";
         data.forEach(row => {
             const tr = document.createElement("tr");
+            const trend = calculateTrend(row);
             tr.innerHTML = `
                 <td>${escapeHtml(row.land)}</td>
                 <td>${escapeHtml(row.unternehmen)}</td>
                 <td data-value="${row.emissionen}">${formatNumber(row.emissionen)}</td>
+                <td>${row.jahr}</td>
+                <td class="trend-cell">${trend}</td>
             `;
             tableBody.appendChild(tr);
         });
@@ -161,14 +164,24 @@ function exportToCsv() {
 // Initialize
 async function ladeDaten() {
     try {
-        const response = await fetch('assets/daten.json');
+        const response = await fetch('daten.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         emissionsDaten = data.emissionen;
-        renderTable(emissionsDaten);
-        initiereSortierung();
+        
+        console.log('Geladene Daten:', emissionsDaten);
+        
+        if (emissionsDaten && emissionsDaten.length > 0) {
+            renderTable(emissionsDaten);
+            initiereSortierung();
+        } else {
+            showError('Keine Daten verfügbar');
+        }
     } catch (error) {
         console.error('Fehler beim Laden der Daten:', error);
-        showError('Failed to load data');
+        showError('Fehler beim Laden der Daten');
     }
 }
 
@@ -244,7 +257,9 @@ function initiereSortierung() {
 
 // Event Listener
 document.addEventListener('DOMContentLoaded', () => {
-    ladeDaten();
+    if (document.getElementById('emissions-table')) {
+        ladeDaten();
+    }
     
     const suchfeld = document.getElementById('search');
     suchfeld.addEventListener('input', (e) => {

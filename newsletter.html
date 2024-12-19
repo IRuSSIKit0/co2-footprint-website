@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de" dir="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter Anmeldung - CO2-Footprint Transparenz</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-main">
+      <img src="assets/logo.svg" alt="CO2-Footprint Transparenz Logo" class="logo">
+      <h1>CO2-Footprint Transparenz</h1>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="hamburger"></span>
+    </button>
+    <nav>
+      <ul>
+        <li><a href="index.html">Startseite</a></li>
+        <li><a href="daten.html">Daten</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="newsletter-section">
+      <h2>Newsletter Anmeldung</h2>
+      <div class="form-container">
+        <form id="newsletterForm" action="/api/newsletter" method="POST" class="secure-form">
+          <!-- CSRF Token (wird durch JS gesetzt) -->
+          <input type="hidden" name="csrf_token" id="csrf_token">
+          
+          <div class="form-group">
+            <label for="email">E-Mail Adresse</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required 
+              maxlength="100"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label for="name">Name (optional)</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              maxlength="50"
+              pattern="[A-Za-zÄäÖöÜüß\s-]{0,50}"
+              autocomplete="name">
+          </div>
+
+          <div class="form-group checkbox-group">
+            <input 
+              type="checkbox" 
+              id="datenschutz" 
+              name="datenschutz" 
+              required>
+            <label for="datenschutz">
+              Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und stimme zu
+            </label>
+          </div>
+
+          <!-- Honeypot-Feld gegen Spam -->
+          <div class="hidden-field">
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="submit-btn" id="submitBtn">Anmelden</button>
+          </div>
+
+          <div id="formMessage" class="form-message" role="alert" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 CO2-Footprint Transparenz e.V. | 
+      <a href="impressum.html">Impressum</a> | 
+      <a href="datenschutz.html">Datenschutz</a>
+    </p>
+  </footer>
+
+  <script src="newsletter.js"></script>
+  <script src="script.js"></script>
+  <script src="security.js"></script>
+</body>
+</html> 

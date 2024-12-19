@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CO2-Emissionsdaten - CO2-Footprint Transparenz</title>
+  <title>Unsere Daten - CO2-Footprint Transparenz</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,53 +20,77 @@
         <li><a href="index.html">Startseite</a></li>
         <li><a href="daten.html">Daten</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section id="daten">
-      <h2>CO2-Emissionsdaten</h2>
-      <div class="section-content">
-        <div class="data-description">
-          <h3>Über unsere Daten</h3>
-          <p>Diese Daten werden regelmäßig aktualisiert und stammen aus offiziellen Quellen wie:</p>
-          <ul>
-            <li>Nachhaltigkeitsberichte der Unternehmen</li>
-            <li>Offizielle CO2-Bilanzen</li>
-            <li>Verifizierte Umweltberichte</li>
-          </ul>
+    <section class="data-overview">
+      <h2>Unsere Datenerhebung</h2>
+      
+      <div class="info-card">
+        <h3>Wie wir Daten sammeln</h3>
+        <p>Unsere CO2-Emissionsdaten stammen aus verschiedenen vertrauenswürdigen Quellen:</p>
+        <ul>
+          <li>Offizielle Nachhaltigkeitsberichte der Unternehmen</li>
+          <li>Staatliche Umweltbehörden</li>
+          <li>Unabhängige Umweltprüforganisationen</li>
+          <li>Wissenschaftliche Studien</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>CO2 im Vergleich</h3>
+        <p>Um die CO2-Emissionen besser einordnen zu können, hier einige Vergleiche:</p>
+        <div class="comparison-grid">
+          <div class="comparison-item">
+            <h4>1 Tonne CO2 entspricht:</h4>
+            <ul>
+              <li>5.000 km Autofahrt</li>
+              <li>Einem Flug von Berlin nach Rom</li>
+              <li>Dem jährlichen Heizverbrauch von 50m² Wohnfläche</li>
+            </ul>
+          </div>
+          <div class="comparison-item">
+            <h4>Jährlicher CO2-Ausstoß:</h4>
+            <ul>
+              <li>Durchschnittsperson in Deutschland: 11,2 Tonnen</li>
+              <li>Ein Baum bindet: 12,5 kg</li>
+              <li>Ein Kleinwagen: 2 Tonnen</li>
+            </ul>
+          </div>
         </div>
-        <div class="table-container">
-          <div class="controls">
-            <input type="text" id="search" placeholder="Nach Land oder Unternehmen suchen">
-            <button class="export-btn" onclick="exportToCsv()">Export CSV</button>
-          </div>
-          <div class="table-wrapper">
-            <table id="emissions-table">
-              <thead>
-                <tr>
-                  <th><button class="sort-btn" data-column="land">Land</button></th>
-                  <th><button class="sort-btn" data-column="unternehmen">Unternehmen</button></th>
-                  <th><button class="sort-btn" data-column="emissionen">CO2-Emissionen (t)</button></th>
-                  <th><button class="sort-btn" data-column="jahr">Jahr</button></th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
+      </div>
+
+      <div class="info-card">
+        <h3>Unsere Methodik</h3>
+        <p>Wir verwenden internationale Standards zur CO2-Bilanzierung:</p>
+        <ul>
+          <li>Greenhouse Gas Protocol (GHG)</li>
+          <li>ISO 14064 zur Treibhausgasberechnung</li>
+          <li>Science Based Targets Initiative (SBTi)</li>
+        </ul>
+      </div>
+
+      <div class="info-card action-card">
+        <h3>Aktiv werden</h3>
+        <p>Möchten Sie mehr über CO2-Emissionen erfahren oder aktiv werden?</p>
+        <div class="action-buttons">
+          <a href="kontakt.html" class="cta-button">Kontaktieren Sie uns</a>
+          <a href="#" class="cta-button secondary">Newsletter abonnieren</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>
-      &copy; 2024 CO2-Footprint Transparenz e.V. | 
+    <p>&copy; 2024 CO2-Footprint Transparenz e.V. | 
       <a href="impressum.html">Impressum</a> | 
       <a href="datenschutz.html">Datenschutz</a>
     </p>
   </footer>
-  <script src="daten.js"></script>
+  <script src="script.js"></script>
+  <script src="security.js"></script>
 </body>
 </html>

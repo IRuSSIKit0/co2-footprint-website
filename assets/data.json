@@ -1,7 +1,0 @@
-{
-    "emissions": [
-        { "land": "Deutschland", "unternehmen": "Firma A", "emissionen": 1000 },
-        { "land": "USA", "unternehmen": "Company B", "emissionen": 2000 },
-        { "land": "China", "unternehmen": "Unternehmen C", "emissionen": 3000 }
-    ]
-}
