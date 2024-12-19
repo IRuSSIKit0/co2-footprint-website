@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /assets/
+Sitemap: https://ihre-domain.de/sitemap.xml 

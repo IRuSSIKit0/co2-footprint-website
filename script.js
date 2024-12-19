@@ -24,8 +24,9 @@ let currentSort = {
 };
 
 // Utility functions
-function escapeHtml(unsafe) {
-    return unsafe
+function escapeHtml(text) {
+    if (text === null || text === undefined) return '';
+    return String(text)
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
@@ -34,7 +35,7 @@ function escapeHtml(unsafe) {
 }
 
 function formatNumber(num) {
-    return new Intl.NumberFormat(DEFAULT_LOCALE).format(num);
+    return new Intl.NumberFormat('de-DE').format(num);
 }
 
 function debounce(func, delay) {
@@ -47,36 +48,42 @@ function debounce(func, delay) {
 
 // Table rendering
 function renderTable(data) {
-    tableContainer.classList.add('loading');
-    
-    try {
-        tableBody.innerHTML = "";
-        data.forEach(row => {
-            const tr = document.createElement("tr");
-            const trend = calculateTrend(row);
-            tr.innerHTML = `
-                <td>${escapeHtml(row.land)}</td>
-                <td>${escapeHtml(row.unternehmen)}</td>
-                <td data-value="${row.emissionen}">${formatNumber(row.emissionen)}</td>
-                <td>${row.jahr}</td>
-                <td class="trend-cell">${trend}</td>
-            `;
-            tableBody.appendChild(tr);
-        });
-    } catch (error) {
-        console.error('Error rendering table:', error);
-        showError('Failed to render table data');
-    } finally {
-        tableContainer.classList.remove('loading');
+    const tableBody = document.querySelector("#emissions-table tbody");
+    if (!tableBody) {
+        console.error('Tabellen-Body nicht gefunden');
+        return;
     }
+
+    tableBody.innerHTML = '';
+    
+    if (data.length === 0) {
+        showNoResults();
+        return;
+    }
+    
+    data.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>${escapeHtml(row.land)}</td>
+            <td>${escapeHtml(row.unternehmen)}</td>
+            <td data-value="${row.emissionen}">${formatNumber(row.emissionen)}</td>
+        `;
+        tableBody.appendChild(tr);
+    });
 }
 
 // Sorting functionality
 function sortData(data, column, direction) {
     return [...data].sort((a, b) => {
-        const valueA = a[column];
-        const valueB = b[column];
+        let valueA = a[column];
+        let valueB = b[column];
         
+        // Numerische Sortierung für Emissionen und Jahr
+        if (column === 'emissionen' || column === 'jahr') {
+            valueA = Number(valueA);
+            valueB = Number(valueB);
+        }
+            
         const comparison = typeof valueA === 'number' 
             ? valueA - valueB
             : String(valueA).localeCompare(String(valueB));
@@ -90,7 +97,8 @@ const handleSearch = debounce((searchTerm) => {
     const trimmedTerm = searchTerm.toLowerCase().trim();
     const filteredData = emissionsDaten.filter(row =>
         row.land.toLowerCase().includes(trimmedTerm) || 
-        row.unternehmen.toLowerCase().includes(trimmedTerm)
+        row.unternehmen.toLowerCase().includes(trimmedTerm) ||
+        String(row.jahr).includes(trimmedTerm)
     );
     
     if (filteredData.length === 0) {
@@ -106,18 +114,20 @@ function showError(message) {
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
     errorDiv.textContent = message;
-    tableContainer.insertAdjacentElement('beforebegin', errorDiv);
-    setTimeout(() => errorDiv.remove(), 3000);
+    document.querySelector('#emissions-table').before(errorDiv);
 }
 
 function showNoResults() {
-    tableBody.innerHTML = `
-        <tr>
-            <td colspan="3" class="no-results">
-                Keine Ergebnisse gefunden
-            </td>
-        </tr>
-    `;
+    const tableBody = document.querySelector("#emissions-table tbody");
+    if (tableBody) {
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="3" class="no-results">
+                    Keine Ergebnisse gefunden
+                </td>
+            </tr>
+        `;
+    }
 }
 
 // Event listeners
@@ -164,24 +174,22 @@ function exportToCsv() {
 // Initialize
 async function ladeDaten() {
     try {
-        const response = await fetch('daten.json');
+        const response = await fetch('assets/daten.json');
+        
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
+        
         const data = await response.json();
+        console.log('Erste Zeile der geladenen Daten:', data.emissionen[0]);
+        
         emissionsDaten = data.emissionen;
+        renderTable(emissionsDaten);
+        initiereSortierung();
         
-        console.log('Geladene Daten:', emissionsDaten);
-        
-        if (emissionsDaten && emissionsDaten.length > 0) {
-            renderTable(emissionsDaten);
-            initiereSortierung();
-        } else {
-            showError('Keine Daten verfügbar');
-        }
     } catch (error) {
         console.error('Fehler beim Laden der Daten:', error);
-        showError('Fehler beim Laden der Daten');
+        showError('Fehler beim Laden der Daten: ' + error.message);
     }
 }
 
@@ -260,21 +268,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('emissions-table')) {
         ladeDaten();
     }
-    
-    const suchfeld = document.getElementById('search');
-    suchfeld.addEventListener('input', (e) => {
-        sucheDaten(e.target.value);
-    });
-    
-    const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('nav');
-    
-    menuToggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        menuToggle.setAttribute('aria-expanded', 
-            menuToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
-        );
-    });
 });
 
 // Fehlermeldung anzeigen
@@ -307,5 +300,74 @@ function validiereEingabe(text) {
                    };
                    return escape[match];
                });
+}
+
+// Funktion zum Initialisieren der Filter
+function initializeFilters(data) {
+    console.log('Initialisiere Filter mit Daten:', data); // Debug-Log
+
+    // Spalten definieren
+    const filterConfig = [
+        { id: 'landFilter', key: 'land' },
+        { id: 'unternehmensFilter', key: 'unternehmen' },
+        { id: 'jahrFilter', key: 'jahr' }
+    ];
+
+    filterConfig.forEach(({ id, key }) => {
+        const filterElement = document.getElementById(id);
+        if (!filterElement) {
+            console.error(`Filter Element ${id} nicht gefunden`);
+            return;
+        }
+
+        // Bestehende Optionen löschen
+        filterElement.innerHTML = '<option value="">Alle</option>';
+
+        // Unique Werte sammeln
+        const uniqueValues = [...new Set(data.map(item => item[key]))].filter(Boolean);
+        console.log(`Unique values for ${key}:`, uniqueValues); // Debug-Log
+
+        // Werte sortieren
+        uniqueValues.sort((a, b) => {
+            if (key === 'jahr') return b - a;
+            return String(a).localeCompare(String(b), 'de');
+        });
+
+        // Optionen hinzufügen
+        uniqueValues.forEach(value => {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = value;
+            filterElement.appendChild(option);
+        });
+    });
+
+    // Event Listener für Filter
+    document.querySelectorAll('.filter-select').forEach(filter => {
+        filter.addEventListener('change', filterData);
+    });
+}
+
+// Funktion zum Filtern der Daten
+function filterData() {
+    const filters = {
+        land: document.getElementById('landFilter').value,
+        unternehmen: document.getElementById('unternehmensFilter').value,
+        jahr: document.getElementById('jahrFilter').value
+    };
+
+    console.log('Aktive Filter:', filters); // Debug-Log
+
+    let filteredData = emissionsDaten;
+
+    // Filter anwenden
+    Object.entries(filters).forEach(([key, value]) => {
+        if (value) {
+            filteredData = filteredData.filter(item => String(item[key]) === String(value));
+        }
+    });
+
+    console.log('Gefilterte Daten:', filteredData); // Debug-Log
+    renderTable(filteredData);
 }
   

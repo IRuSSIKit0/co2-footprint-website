@@ -3,7 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CO2-Footprint Transparenz</title>
+  <meta name="description" content="CO2-Footprint Transparenz - Wir machen Klimabilanzen von Unternehmen transparent und verständlich.">
+  <meta name="keywords" content="CO2, Klimabilanz, Nachhaltigkeit, Transparenz, Umweltschutz">
+  <meta name="author" content="CO2-Footprint Transparenz e.V.">
+  
+  <!-- Open Graph Tags für Social Media -->
+  <meta property="og:title" content="CO2-Footprint Transparenz">
+  <meta property="og:description" content="Wir machen Klimabilanzen transparent">
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta property="og:url" content="https://ihre-domain.de">
+  
+  <title>CO2-Footprint Transparenz - Startseite</title>
+  <link rel="canonical" href="https://ihre-domain.de">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -47,9 +58,30 @@
             <table id="emissions-table">
               <thead>
                 <tr>
-                  <th><button class="sort-btn" data-column="land">Land</button></th>
-                  <th><button class="sort-btn" data-column="unternehmen">Unternehmen</button></th>
-                  <th><button class="sort-btn" data-column="emissionen">CO2-Emissionen (t)</button></th>
+                  <th>
+                    <div class="table-header">
+                      <span>Land</span>
+                      <button class="sort-btn" data-column="land">
+                        <i class="sort-icon"></i>
+                      </button>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="table-header">
+                      <span>Unternehmen</span>
+                      <button class="sort-btn" data-column="unternehmen">
+                        <i class="sort-icon"></i>
+                      </button>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="table-header">
+                      <span>CO2-Emissionen (t)</span>
+                      <button class="sort-btn" data-column="emissionen">
+                        <i class="sort-icon"></i>
+                      </button>
+                    </div>
+                  </th>
                 </tr>
               </thead>
               <tbody></tbody>

@@ -12,6 +12,7 @@
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 0 5px rgba(0, 77, 64, 0.2);
     --transition-default: all 0.3s ease;
+    --focus-outline: 3px solid #4A90E2;
 }
 
 body {
@@ -718,5 +719,122 @@ textarea {
     .form-container {
         padding: var(--spacing-md);
     }
+}
+
+/* Verbesserte Barrierefreiheit */
+:root {
+  --focus-outline: 3px solid #4A90E2;
+}
+
+/* Bessere Fokus-Styles */
+*:focus {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Skip-Link für Keyboard-Navigation */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Verbesserte Kontraste */
+.text-content {
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ARIA-Verbesserungen für das Menü */
+.menu-toggle[aria-expanded="true"] + nav {
+  display: block;
+}
+
+/* Verbesserte Formular-Zugänglichkeit */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group .help-text {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* Fehlerstaaten */
+.form-group.has-error input {
+  border-color: #dc3545;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Tabellen-Header Styling */
+.table-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.table-header span {
+  font-weight: bold;
+  color: white;
+}
+
+.sort-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: white;
+}
+
+.sort-btn:hover {
+  opacity: 0.8;
+}
+
+.sort-icon {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  margin-left: 5px;
+}
+
+.sort-btn.sort-asc .sort-icon {
+  border-bottom: 5px solid white;
+}
+
+.sort-btn.sort-desc .sort-icon {
+  border-top: 5px solid white;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+  .table-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
   
