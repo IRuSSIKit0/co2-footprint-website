@@ -29,14 +29,28 @@ header, footer {
     padding: var(--spacing-lg);
 }
 
+.header-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
+}
+
 .logo {
-    width: 50px;
-    height: auto;
+    width: 150px;
+    height: 150px;
     transition: transform 0.3s ease;
 }
 
 .logo:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: var(--text-light);
 }
 
 /* Navigation */
@@ -151,6 +165,21 @@ input:focus {
         top: 50%;
         opacity: 0.5;
         animation: fadeInOut 2s infinite;
+    }
+
+    .header-main {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        text-align: center;
     }
 }
 

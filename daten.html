@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de" dir="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CO2-Emissionsdaten - CO2-Footprint Transparenz</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-main">
+      <img src="assets/logo.svg" alt="CO2-Footprint Transparenz Logo" class="logo">
+      <h1>CO2-Footprint Transparenz</h1>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="hamburger"></span>
+    </button>
+    <nav>
+      <ul>
+        <li><a href="index.html">Startseite</a></li>
+        <li><a href="daten.html">Daten</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="daten">
+      <h2>CO2-Emissionsdaten</h2>
+      <div class="section-content">
+        <div class="data-description">
+          <h3>Über unsere Daten</h3>
+          <p>Diese Daten werden regelmäßig aktualisiert und stammen aus offiziellen Quellen wie:</p>
+          <ul>
+            <li>Nachhaltigkeitsberichte der Unternehmen</li>
+            <li>Offizielle CO2-Bilanzen</li>
+            <li>Verifizierte Umweltberichte</li>
+          </ul>
+        </div>
+        <div class="table-container">
+          <div class="controls">
+            <input type="text" id="search" placeholder="Nach Land oder Unternehmen suchen">
+            <button class="export-btn" onclick="exportToCsv()">Export CSV</button>
+          </div>
+          <div class="table-wrapper">
+            <table id="emissions-table">
+              <thead>
+                <tr>
+                  <th><button class="sort-btn" data-column="land">Land</button></th>
+                  <th><button class="sort-btn" data-column="unternehmen">Unternehmen</button></th>
+                  <th><button class="sort-btn" data-column="emissionen">CO2-Emissionen (t)</button></th>
+                  <th><button class="sort-btn" data-column="jahr">Jahr</button></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2024 CO2-Footprint Transparenz e.V. | 
+      <a href="impressum.html">Impressum</a> | 
+      <a href="datenschutz.html">Datenschutz</a>
+    </p>
+  </footer>
+  <script src="daten.js"></script>
+</body>
+</html>

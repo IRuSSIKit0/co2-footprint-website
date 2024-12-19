@@ -7,17 +7,18 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header mit Logo -->
   <header>
-    <img src="assets/logo.png" alt="Logo" class="logo">
-    <button class="menu-toggle" aria-label="Toggle menu">
+    <div class="header-main">
+      <img src="assets/logo.svg" alt="CO2-Footprint Transparenz Logo" class="logo">
+      <h1>CO2-Footprint Transparenz</h1>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span class="hamburger"></span>
     </button>
-    <h1>CO2-Footprint Transparenz</h1>
     <nav>
       <ul>
-        <li><a href="#home">Startseite</a></li>
-        <li><a href="#daten">Daaten</a></li>
+        <li><a href="index.html">Startseite</a></li>
+        <li><a href="daten.html">Daten</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
       </ul>
     </nav>
@@ -70,7 +71,11 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2024 Non-Profit Organisation | Impressum | Datenschutz</p>
+    <p>
+      &copy; 2024 CO2-Footprint Transparenz e.V. | 
+      <a href="impressum.html">Impressum</a> | 
+      <a href="datenschutz.html">Datenschutz</a>
+    </p>
   </footer>
   <script src="script.js"></script>
 </body>

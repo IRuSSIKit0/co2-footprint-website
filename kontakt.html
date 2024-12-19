@@ -7,17 +7,18 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header mit Logo -->
   <header>
-    <img src="assets/logo.png" alt="Logo" class="logo">
-    <button class="menu-toggle" aria-label="Toggle menu">
+    <div class="header-main">
+      <img src="assets/logo.svg" alt="CO2-Footprint Transparenz Logo" class="logo">
+      <h1>CO2-Footprint Transparenz</h1>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span class="hamburger"></span>
     </button>
-    <h1>CO2-Footprint Transparenz</h1>
     <nav>
       <ul>
-        <li><a href="index.html#home">Startseite</a></li>
-        <li><a href="index.html#daten">Daten</a></li>
+        <li><a href="index.html">Startseite</a></li>
+        <li><a href="daten.html">Daten</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
       </ul>
     </nav>
@@ -37,19 +38,34 @@
           </ul>
         </div>
         
-        <form class="contact-form">
+        <form class="contact-form" onsubmit="return validateForm(event)">
           <h3>Kontaktformular</h3>
           <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" 
+                   id="name" 
+                   name="name" 
+                   required 
+                   pattern="[A-Za-zÄäÖöÜüß\s-]{2,50}"
+                   title="Bitte geben Sie einen gültigen Namen ein (2-50 Zeichen, nur Buchstaben, Leerzeichen und Bindestriche erlaubt)">
           </div>
           <div class="form-group">
             <label for="email">E-Mail:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" 
+                   id="email" 
+                   name="email" 
+                   required 
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                   title="Bitte geben Sie eine gültige E-Mail-Adresse ein">
           </div>
           <div class="form-group">
             <label for="message">Nachricht:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+            <textarea id="message" 
+                      name="message" 
+                      rows="5" 
+                      required 
+                      maxlength="1000"
+                      title="Bitte geben Sie eine Nachricht ein (maximal 1000 Zeichen)"></textarea>
           </div>
           <button type="submit" class="submit-btn">Nachricht senden</button>
         </form>
@@ -59,8 +75,59 @@
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2024 Non-Profit Organisation | Impressum | Datenschutz</p>
+    <p>
+      &copy; 2024 CO2-Footprint Transparenz e.V. | 
+      <a href="impressum.html">Impressum</a> | 
+      <a href="datenschutz.html">Datenschutz</a>
+    </p>
   </footer>
   <script src="script.js"></script>
+  <script>
+  function validateForm(event) {
+      event.preventDefault();
+      
+      // Hole die Formularelemente
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const messageInput = document.getElementById('message');
+      
+      // Validiere Name
+      const nameValue = validiereEingabe(nameInput.value.trim());
+      if (!/^[A-Za-zÄäÖöÜüß\s-]{2,50}$/.test(nameValue)) {
+          alert('Bitte geben Sie einen gültigen Namen ein.');
+          return false;
+      }
+      
+      // Validiere Email
+      const emailValue = validiereEingabe(emailInput.value.trim());
+      if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailValue)) {
+          alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+          return false;
+      }
+      
+      // Validiere Nachricht
+      const messageValue = validiereEingabe(messageInput.value.trim());
+      if (messageValue.length < 1 || messageValue.length > 1000) {
+          alert('Bitte geben Sie eine Nachricht ein (maximal 1000 Zeichen).');
+          return false;
+      }
+      
+      // Wenn alles valid ist, können die Daten sicher verarbeitet werden
+      sendFormData({
+          name: nameValue,
+          email: emailValue,
+          message: messageValue
+      });
+      
+      return false;
+  }
+
+  function sendFormData(data) {
+      // Hier würde der Code zum sicheren Senden der Daten an den Server stehen
+      console.log('Validierte Daten:', data);
+      alert('Vielen Dank für Ihre Nachricht!');
+      document.querySelector('.contact-form').reset();
+  }
+  </script>
 </body>
 </html> 

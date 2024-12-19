@@ -1,0 +1,604 @@
+{
+    "emissionen": [
+      {
+        "land": "Norwegen",
+        "unternehmen": "FutureOHG",
+        "emissionen": 52139,
+        "jahr": 2023
+      },
+      {
+        "land": "Italien",
+        "unternehmen": "GreenAG",
+        "emissionen": 55292,
+        "jahr": 2022
+      },
+      {
+        "land": "Dänemark",
+        "unternehmen": "WindOHG",
+        "emissionen": 75889,
+        "jahr": 2021
+      },
+      {
+        "land": "Dänemark",
+        "unternehmen": "SolarGmbH",
+        "emissionen": 4506,
+        "jahr": 2021
+      },
+      {
+        "land": "Belgien",
+        "unternehmen": "SmartSE",
+        "emissionen": 51962,
+        "jahr": 2024
+      },
+      {
+        "land": "Norwegen",
+        "unternehmen": "SustainableKG",
+        "emissionen": 63066,
+        "jahr": 2024
+      },
+      {
+        "land": "Niederlande",
+        "unternehmen": "BioGmbH",
+        "emissionen": 78811,
+        "jahr": 2020
+      },
+      {
+        "land": "Italien",
+        "unternehmen": "WindGmbH",
+        "emissionen": 96008,
+        "jahr": 2020
+      },
+      {
+        "land": "Norwegen",
+        "unternehmen": "SmartOHG",
+        "emissionen": 37592,
+        "jahr": 2022
+      },
+      {
+        "land": "Italien",
+        "unternehmen": "WindTech",
+        "emissionen": 49662,
+        "jahr": 2024
+      },
+      {
+        "land": "Deutschland",
+        "unternehmen": "EcoAG",
+        "emissionen": 8790,
+        "jahr": 2024
+      },
+      {
+        "land": "Dänemark",
+        "unternehmen": "SolarGroup",
+        "emissionen": 83534,
+        "jahr": 2023
+      },
+      {
+        "land": "Schweden",
+        "unternehmen": "SolarGroup",
+        "emissionen": 28035,
+        "jahr": 2020
+      },
+      {
+        "land": "Schweiz",
+        "unternehmen": "BioIndustries",
+        "emissionen": 66624,
+        "jahr": 2021
+      },
+      {
+        "land": "Dänemark",
+        "unternehmen": "SustainableLtd.",
+        "emissionen": 19279,
+        "jahr": 2020
+      },
+      {
+        "land": "Österreich",
+        "unternehmen": "FutureOHG",
+        "emissionen": 81848,
+        "jahr": 2020
+      },
+      {
+        "land": "Deutschland",
+        "unternehmen": "WindTech",
+        "emissionen": 62308,
+        "jahr": 2024
+      },
+      {
+        "land": "Norwegen",
+        "unternehmen": "CleanIndustries",
+        "emissionen": 65640,
+        "jahr": 2020
+      },
+      {
+        "land": "Niederlande",
+        "unternehmen": "GreenIndustries",
+        "emissionen": 66430,
+        "jahr": 2020
+      },
+      {
+        "land": "Österreich",
+        "unternehmen": "EcoHolding",
+        "emissionen": 34529,
+        "jahr": 2021
+      },
+      {
+        "land": "Deutschland",
+        "unternehmen": "SustainableAG",
+        "emissionen": 50593,
+        "jahr": 2021
+      },
+      {
+        "land": "Schweden",
+        "unternehmen": "WindKG",
+        "emissionen": 72889,
+        "jahr": 2023
+      },
+      {
+        "land": "Dänemark",
+        "unternehmen": "GreenIndustries",
+        "emissionen": 77902,
+        "jahr": 2023
+      },
+      {
+        "land": "Schweden",
+        "unternehmen": "BioGroup",
+        "emissionen": 63300,
+        "jahr": 2020
+      },
+      {
+        "land": "Norwegen",
+        "unternehmen": "NatureKG",
+        "emissionen": 69368,
+        "jahr": 2024
+      },
+      {
+        "land": "Schweden",
+        "unternehmen": "SustainableLtd.",
+        "emissionen": 69977,
+        "jahr": 2023
+      },
+      {
+        "land": "Norwegen",
+        "unternehmen": "SmartKG",
+        "emissionen": 68400,
+        "jahr": 2023
+      },
+      {
+        "land": "Belgien",
+        "unternehmen": "CleanIndustries",
+        "emissionen": 9469,
+        "jahr": 2021
+      },
+      {
+        "land": "Deutschland",
+        "unternehmen": "NatureHolding",
+        "emissionen": 38827,
+        "jahr": 2024
+      },
+      {
+        "land": "Österreich",
+        "unternehmen": "SmartKG",
+        "emissionen": 38919,
+        "jahr": 2023
+      },
+      {
+        "land": "Frankreich",
+        "unternehmen": "SustainableGmbH",
+        "emissionen": 8613,
+        "jahr": 2023
+      },
+      {
+        "land": "Norwegen",
+        "unternehmen": "FutureAG",
+        "emissionen": 69042,
+        "jahr": 2022
+      },
+      {
+        "land": "Deutschland",
+        "unternehmen": "EcoOHG",
+        "emissionen": 82246,
+        "jahr": 2023
+      },
+      {
+        "land": "Schweiz",
+        "unternehmen": "GreenGroup",
+        "emissionen": 44982,
+        "jahr": 2024
+      },
+      {
+        "land": "Deutschland",
+        "unternehmen": "BioKG",
+        "emissionen": 84955,
+        "jahr": 2024
+      },
+      {
+        "land": "Italien",
+        "unternehmen": "SustainableOHG",
+        "emissionen": 22123,
+        "jahr": 2023
+      },
+      {
+        "land": "Frankreich",
+        "unternehmen": "GreenSE",
+        "emissionen": 60262,
+        "jahr": 2022
+      },
+      {
+        "land": "Italien",
+        "unternehmen": "WindSE",
+        "emissionen": 59112,
+        "jahr": 2021
+      },
+      {
+        "land": "Dänemark",
+        "unternehmen": "FutureGroup",
+        "emissionen": 60204,
+        "jahr": 2024
+      },
+      {
+        "land": "Niederlande",
+        "unternehmen": "EcoTech",
+        "emissionen": 89464,
+        "jahr": 2023
+      },
+      {
+        "land": "Niederlande",
+        "unternehmen": "BioLtd.",
+        "emissionen": 7566,
+        "jahr": 2021
+      },
+      {
+        "land": "Belgien",
+        "unternehmen": "SmartAG",
+        "emissionen": 63761,
+        "jahr": 2022
+      },
+      {
+        "land": "Schweiz",
+        "unternehmen": "BioHolding",
+        "emissionen": 89840,
+        "jahr": 2024
+      },
+      {
+        "land": "Schweden",
+        "unternehmen": "NatureGmbH",
+        "emissionen": 86100,
+        "jahr": 2024
+      },
+      {
+        "land": "Schweden",
+        "unternehmen": "BioLtd.",
+        "emissionen": 61767,
+        "jahr": 2023
+      },
+      {
+        "land": "Frankreich",
+        "unternehmen": "BioOHG",
+        "emissionen": 31270,
+        "jahr": 2024
+      },
+      {
+        "land": "Österreich",
+        "unternehmen": "SustainableSE",
+        "emissionen": 33753,
+        "jahr": 2023
+      },
+      {
+        "land": "Dänemark",
+        "unternehmen": "WindIndustries",
+        "emissionen": 43295,
+        "jahr": 2021
+      },
+      {
+        "land": "Belgien",
+        "unternehmen": "SustainableGroup",
+        "emissionen": 73740,
+        "jahr": 2022
+      },
+      {
+        "land": "Norwegen",
+        "unternehmen": "EcoKG",
+        "emissionen": 26661,
+        "jahr": 2022
+      },
+      {
+        "land": "Schweden",
+        "unternehmen": "SmartSE",
+        "emissionen": 31634,
+        "jahr": 2024
+      },
+      {
+        "land": "Österreich",
+        "unternehmen": "SmartLtd.",
+        "emissionen": 71499,
+        "jahr": 2021
+      },
+      {
+        "land": "Schweden",
+        "unternehmen": "SustainableLtd.",
+        "emissionen": 3405,
+        "jahr": 2022
+      },
+      {
+        "land": "Deutschland",
+        "unternehmen": "GreenHolding",
+        "emissionen": 35159,
+        "jahr": 2022
+      },
+      {
+        "land": "Schweden",
+        "unternehmen": "CleanKG",
+        "emissionen": 72946,
+        "jahr": 2021
+      },
+      {
+        "land": "Belgien",
+        "unternehmen": "CleanGroup",
+        "emissionen": 57870,
+        "jahr": 2024
+      },
+      {
+        "land": "Schweiz",
+        "unternehmen": "EcoOHG",
+        "emissionen": 43840,
+        "jahr": 2022
+      },
+      {
+        "land": "Norwegen",
+        "unternehmen": "SolarLtd.",
+        "emissionen": 87019,
+        "jahr": 2021
+      },
+      {
+        "land": "Norwegen",
+        "unternehmen": "WindOHG",
+        "emissionen": 53983,
+        "jahr": 2021
+      },
+      {
+        "land": "Österreich",
+        "unternehmen": "FutureTech",
+        "emissionen": 78001,
+        "jahr": 2021
+      },
+      {
+        "land": "Niederlande",
+        "unternehmen": "FutureGmbH",
+        "emissionen": 93903,
+        "jahr": 2024
+      },
+      {
+        "land": "Italien",
+        "unternehmen": "SolarLtd.",
+        "emissionen": 54309,
+        "jahr": 2023
+      },
+      {
+        "land": "Niederlande",
+        "unternehmen": "EcoKG",
+        "emissionen": 65114,
+        "jahr": 2021
+      },
+      {
+        "land": "Belgien",
+        "unternehmen": "SmartTech",
+        "emissionen": 24535,
+        "jahr": 2024
+      },
+      {
+        "land": "Niederlande",
+        "unternehmen": "BioGroup",
+        "emissionen": 55276,
+        "jahr": 2020
+      },
+      {
+        "land": "Belgien",
+        "unternehmen": "SustainableIndustries",
+        "emissionen": 1239,
+        "jahr": 2022
+      },
+      {
+        "land": "Schweden",
+        "unternehmen": "SustainableOHG",
+        "emissionen": 51811,
+        "jahr": 2021
+      },
+      {
+        "land": "Schweiz",
+        "unternehmen": "BioAG",
+        "emissionen": 6298,
+        "jahr": 2024
+      },
+      {
+        "land": "Belgien",
+        "unternehmen": "SolarGroup",
+        "emissionen": 66842,
+        "jahr": 2022
+      },
+      {
+        "land": "Schweiz",
+        "unternehmen": "CleanGroup",
+        "emissionen": 89884,
+        "jahr": 2020
+      },
+      {
+        "land": "Schweden",
+        "unternehmen": "CleanTech",
+        "emissionen": 6628,
+        "jahr": 2020
+      },
+      {
+        "land": "Norwegen",
+        "unternehmen": "EcoHolding",
+        "emissionen": 55406,
+        "jahr": 2020
+      },
+      {
+        "land": "Niederlande",
+        "unternehmen": "GreenAG",
+        "emissionen": 1579,
+        "jahr": 2024
+      },
+      {
+        "land": "Schweiz",
+        "unternehmen": "EcoSE",
+        "emissionen": 94194,
+        "jahr": 2024
+      },
+      {
+        "land": "Belgien",
+        "unternehmen": "EcoAG",
+        "emissionen": 49750,
+        "jahr": 2023
+      },
+      {
+        "land": "Dänemark",
+        "unternehmen": "FutureIndustries",
+        "emissionen": 41006,
+        "jahr": 2020
+      },
+      {
+        "land": "Schweiz",
+        "unternehmen": "GreenIndustries",
+        "emissionen": 63934,
+        "jahr": 2024
+      },
+      {
+        "land": "Österreich",
+        "unternehmen": "WindSE",
+        "emissionen": 68166,
+        "jahr": 2020
+      },
+      {
+        "land": "Italien",
+        "unternehmen": "FutureKG",
+        "emissionen": 69657,
+        "jahr": 2022
+      },
+      {
+        "land": "Belgien",
+        "unternehmen": "SustainableAG",
+        "emissionen": 9172,
+        "jahr": 2022
+      },
+      {
+        "land": "Belgien",
+        "unternehmen": "SmartSE",
+        "emissionen": 76076,
+        "jahr": 2020
+      },
+      {
+        "land": "Norwegen",
+        "unternehmen": "GreenHolding",
+        "emissionen": 48517,
+        "jahr": 2020
+      },
+      {
+        "land": "Deutschland",
+        "unternehmen": "CleanSE",
+        "emissionen": 54452,
+        "jahr": 2020
+      },
+      {
+        "land": "Norwegen",
+        "unternehmen": "WindGroup",
+        "emissionen": 37934,
+        "jahr": 2021
+      },
+      {
+        "land": "Norwegen",
+        "unternehmen": "CleanOHG",
+        "emissionen": 53517,
+        "jahr": 2024
+      },
+      {
+        "land": "Schweiz",
+        "unternehmen": "EcoIndustries",
+        "emissionen": 21283,
+        "jahr": 2020
+      },
+      {
+        "land": "Italien",
+        "unternehmen": "EcoAG",
+        "emissionen": 7267,
+        "jahr": 2020
+      },
+      {
+        "land": "Deutschland",
+        "unternehmen": "GreenKG",
+        "emissionen": 56183,
+        "jahr": 2023
+      },
+      {
+        "land": "Niederlande",
+        "unternehmen": "GreenAG",
+        "emissionen": 51012,
+        "jahr": 2024
+      },
+      {
+        "land": "Belgien",
+        "unternehmen": "GreenSE",
+        "emissionen": 64259,
+        "jahr": 2022
+      },
+      {
+        "land": "Österreich",
+        "unternehmen": "EcoGmbH",
+        "emissionen": 69365,
+        "jahr": 2024
+      },
+      {
+        "land": "Italien",
+        "unternehmen": "BioAG",
+        "emissionen": 7027,
+        "jahr": 2024
+      },
+      {
+        "land": "Schweden",
+        "unternehmen": "EcoLtd.",
+        "emissionen": 53580,
+        "jahr": 2024
+      },
+      {
+        "land": "Frankreich",
+        "unternehmen": "FutureTech",
+        "emissionen": 30254,
+        "jahr": 2021
+      },
+      {
+        "land": "Österreich",
+        "unternehmen": "SolarGmbH",
+        "emissionen": 24265,
+        "jahr": 2020
+      },
+      {
+        "land": "Schweden",
+        "unternehmen": "SolarAG",
+        "emissionen": 73761,
+        "jahr": 2021
+      },
+      {
+        "land": "Norwegen",
+        "unternehmen": "CleanGmbH",
+        "emissionen": 3865,
+        "jahr": 2022
+      },
+      {
+        "land": "Dänemark",
+        "unternehmen": "FutureTech",
+        "emissionen": 2491,
+        "jahr": 2022
+      },
+      {
+        "land": "Deutschland",
+        "unternehmen": "SustainableHolding",
+        "emissionen": 45245,
+        "jahr": 2023
+      },
+      {
+        "land": "Deutschland",
+        "unternehmen": "SmartGmbH",
+        "emissionen": 23035,
+        "jahr": 2021
+      }
+    ]
+  }
