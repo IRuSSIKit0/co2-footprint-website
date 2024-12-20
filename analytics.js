@@ -51,4 +51,16 @@ class Analytics {
     // Implementieren Sie hier Ihre Server-Kommunikation
     console.log('Analytics event:', event);
   }
+}
+
+class EmissionsAnalytics {
+  trackTableInteraction(action, details) {
+    // Anonymisiertes Tracking
+    const event = {
+      category: 'table_interaction',
+      action: action,
+      timestamp: new Date().toISOString()
+    };
+    this.sendToAnalytics(event);
+  }
 } 

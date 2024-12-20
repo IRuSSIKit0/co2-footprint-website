@@ -174,22 +174,19 @@ function exportToCsv() {
 // Initialize
 async function ladeDaten() {
     try {
-        const response = await fetch('assets/daten.json');
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        const response = await fetch('daten.json');
+        if (!response.ok) throw new Error('Netzwerkfehler');
         
         const data = await response.json();
-        console.log('Erste Zeile der geladenen Daten:', data.emissionen[0]);
-        
         emissionsDaten = data.emissionen;
+        
         renderTable(emissionsDaten);
-        initiereSortierung();
+        createEmissionsChart(emissionsDaten);
+        calculateEnvironmentalImpact(emissionsDaten);
         
     } catch (error) {
         console.error('Fehler beim Laden der Daten:', error);
-        showError('Fehler beim Laden der Daten: ' + error.message);
+        showError('Fehler beim Laden der Daten');
     }
 }
 
@@ -369,5 +366,172 @@ function filterData() {
 
     console.log('Gefilterte Daten:', filteredData); // Debug-Log
     renderTable(filteredData);
+}
+
+// Beispiel für erweiterte Interaktivität
+function addRowInteractions() {
+    const rows = document.querySelectorAll('#emissions-table tbody tr');
+    rows.forEach(row => {
+        row.addEventListener('click', () => {
+            showDetailView(row.dataset);
+        });
+        
+        row.addEventListener('mouseenter', () => {
+            row.classList.add('highlight');
+        });
+    });
+}
+
+// Virtualisierte Tabelle für große Datensätze
+class VirtualizedTable {
+    constructor(container, data) {
+        this.pageSize = 50;
+        this.currentPage = 0;
+        this.data = data;
+        this.container = container;
+        
+        this.init();
+    }
+    
+    init() {
+        this.renderVisibleRows();
+        this.setupIntersectionObserver();
+    }
+}
+
+// Chart.js Implementierung überarbeiten
+async function createEmissionsChart(data) {
+    const ctx = document.getElementById('emissionsChart').getContext('2d');
+    
+    // Sortiere die Daten nach Emissionen absteigend
+    const sortedData = [...data].sort((a, b) => b.emissionen - a.emissionen);
+    
+    // Nimm nur die Top 10 für bessere Übersichtlichkeit
+    const top10Data = sortedData.slice(0, 10);
+    
+    const chartData = {
+        labels: top10Data.map(item => item.unternehmen),
+        datasets: [{
+            label: 'CO2-Emissionen (t)',
+            data: top10Data.map(item => item.emissionen),
+            backgroundColor: 'rgba(0, 77, 64, 0.7)',
+            borderColor: 'rgba(0, 77, 64, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: chartData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Top 10 Unternehmen nach CO2-Emissionen',
+                    color: '#004d40',
+                    font: {
+                        size: 16
+                    }
+                },
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'CO2-Emissionen (t)',
+                        color: '#004d40'
+                    }
+                },
+                x: {
+                    ticks: {
+                        maxRotation: 45,
+                        minRotation: 45
+                    }
+                }
+            }
+        }
+    });
+}
+
+// Umweltauswirkungen berechnen
+function calculateEnvironmentalImpact(data) {
+    const totalEmissions = data.reduce((sum, item) => sum + item.emissionen, 0);
+    const treesNeeded = Math.round(totalEmissions * 1000 / 12.5); // kg CO2 pro Baum pro Jahr
+    
+    document.getElementById('treeCalculation').innerHTML = `
+        <p>Für die Kompensation der gesamten ${formatNumber(totalEmissions)} Tonnen CO2 
+        würden <strong>${formatNumber(treesNeeded)} Bäume</strong> für ein Jahr benötigt.</p>
+    `;
+
+    document.getElementById('environmentalImpact').innerHTML = `
+        <ul>
+            <li>🌡️ Schmelzen von ${formatNumber(Math.round(totalEmissions * 3))} m³ Arktiseis</li>
+            <li>🌍 ${formatNumber(Math.round(totalEmissions * 0.3))} m² Verlust an Permafrost</li>
+            <li>🌊 Beitrag zur Erhöhung des Meeresspiegels um ${(totalEmissions * 0.000000001).toFixed(8)} mm</li>
+        </ul>
+    `;
+}
+
+// Newsletter-Formular-Validierung
+document.getElementById('newsletterForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+    
+    // Validierung
+    if (!validateEmail(data.email)) {
+        showError('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+        return;
+    }
+    
+    // Newsletter-Anmeldung
+    subscribeNewsletter(data);
+});
+
+async function subscribeNewsletter(data) {
+    try {
+        const response = await fetch('/api/newsletter/subscribe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+            showSuccess('Vielen Dank für Ihre Anmeldung! Bitte bestätigen Sie diese über den Link in der E-Mail.');
+            document.getElementById('newsletterForm').reset();
+        } else {
+            throw new Error('Fehler bei der Newsletter-Anmeldung');
+        }
+    } catch (error) {
+        showError('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.');
+    }
+}
+
+function showSuccess(message) {
+    // Erfolgsanzeige implementieren
+    alert(message); // Sollte durch eine bessere UI-Komponente ersetzt werden
+}
+
+// Google Maps Integration
+function initMap() {
+    const map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 52.520008, lng: 13.404954 }, // Berlin
+        zoom: 15
+    });
+    
+    const marker = new google.maps.Marker({
+        position: { lat: 52.520008, lng: 13.404954 },
+        map: map,
+        title: 'CO2-Footprint Transparenz e.V.'
+    });
 }
   

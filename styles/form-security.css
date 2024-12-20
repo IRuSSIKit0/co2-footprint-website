@@ -1,0 +1,184 @@
+/* Sicherheits-spezifische Formular-Styles */
+.secure-form {
+    position: relative;
+    isolation: isolate; /* Verhindert Stacking Context Manipulation */
+}
+
+/* Honeypot-Falle verstecken */
+.secure-form input[name="website"] {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Validierungsstatus-Styles */
+.secure-form input:invalid,
+.secure-form textarea:invalid {
+    border-color: #dc3545;
+    box-shadow: none; /* Verhindert Browser-Default Schatten */
+}
+
+.secure-form input:valid,
+.secure-form textarea:valid {
+    border-color: #28a745;
+}
+
+/* Nur anzeigen wenn das Feld besucht wurde */
+.secure-form input:not(:placeholder-shown):invalid,
+.secure-form textarea:not(:placeholder-shown):invalid {
+    background-image: url('data:image/svg+xml,...'); /* Warnsymbol */
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+}
+
+/* Fehlermeldungen */
+.error-message {
+    display: none;
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.secure-form input:invalid + .error-message,
+.secure-form textarea:invalid + .error-message {
+    display: block;
+}
+
+/* Sicherheits-Indikatoren */
+.secure-form .form-group {
+    position: relative;
+}
+
+.secure-form .form-group::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Eingabestärke-Indikator für Passwörter */
+.password-strength {
+    height: 4px;
+    margin-top: 0.5rem;
+    background: #eee;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.password-strength-meter {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* Submit-Button Sicherheit */
+.secure-form button[type="submit"] {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.secure-form button[type="submit"][disabled] {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* Loading-State für Submit */
+.secure-form button[type="submit"].loading {
+    padding-right: 2.5rem;
+}
+
+.secure-form button[type="submit"].loading::after {
+    content: '';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #fff;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.75s linear infinite;
+}
+
+/* Captcha-Container */
+.captcha-container {
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Rate-Limiting Feedback */
+.rate-limit-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ffeeba;
+    border-radius: 4px;
+    display: none;
+}
+
+/* Sicherheits-Badges */
+.security-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    color: #fff;
+    background-color: #28a745;
+    border-radius: 1rem;
+    margin-left: 0.5rem;
+}
+
+.security-badge.ssl {
+    background-color: #28a745;
+}
+
+.security-badge.protected {
+    background-color: #17a2b8;
+}
+
+/* Animations */
+@keyframes spin {
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+/* Barrierefreiheit */
+@media (prefers-reduced-motion: reduce) {
+    .secure-form button[type="submit"].loading::after {
+        animation: none;
+    }
+}
+
+/* High Contrast Mode */
+@media (forced-colors: active) {
+    .secure-form input:invalid,
+    .secure-form textarea:invalid {
+        border: 2px solid CanvasText;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .secure-form button[type="submit"],
+    .captcha-container,
+    .security-badge {
+        display: none;
+    }
+} 

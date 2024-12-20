@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kontaktieren Sie uns für Fragen rund um CO2-Emissionen und Klimaschutz">
   <title>Kontakt - CO2-Footprint Transparenz</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -19,117 +20,168 @@
       <ul>
         <li><a href="index.html">Startseite</a></li>
         <li><a href="daten.html">Daten</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="kontakt.html" class="active">Kontakt</a></li>
         <li><a href="newsletter.html">Newsletter</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section id="kontakt">
-      <h2>Kontakt</h2>
-      <div class="section-content">
-        <div class="contact-info">
-          <h3>So erreichen Sie uns</h3>
-          <p>Haben Sie Fragen oder Anregungen? Wir sind für Sie da!</p>
-          <ul>
-            <li>📧 E-Mail: info@co2-transparenz.org</li>
-            <li>📞 Telefon: +49 (0) 123 456789</li>
-            <li>📍 Adresse: Klimastraße 1, 10115 Berlin</li>
-          </ul>
-        </div>
-        
-        <form class="contact-form" onsubmit="return validateForm(event)">
-          <h3>Kontaktformular</h3>
-          <div class="form-group">
-            <label for="name">Name:</label>
+  <main class="container">
+    <section class="contact-section content-section">
+      <div class="section-header">
+        <h2>Kontaktieren Sie uns</h2>
+        <p class="section-description">
+          Haben Sie Fragen zu CO2-Emissionen oder möchten Sie mehr über unsere Arbeit erfahren? 
+          Wir sind für Sie da!
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Kontaktformular mit Sicherheitsmerkmalen -->
+        <div class="contact-form content-card">
+          <h3 class="card-title">Nachricht senden</h3>
+          <form id="contactForm" 
+                action="/api/contact" 
+                method="POST" 
+                class="secure-form"
+                autocomplete="off"
+                novalidate>
+            
+            <!-- CSRF Protection -->
+            <input type="hidden" 
+                   name="csrf_token" 
+                   value="{{ csrf_token }}">
+            
+            <!-- Honeypot-Falle -->
             <input type="text" 
-                   id="name" 
-                   name="name" 
-                   required 
-                   pattern="[A-Za-zÄäÖöÜüß\s-]{2,50}"
-                   title="Bitte geben Sie einen gültigen Namen ein (2-50 Zeichen, nur Buchstaben, Leerzeichen und Bindestriche erlaubt)">
+                   name="website" 
+                   style="display:none" 
+                   tabindex="-1" 
+                   autocomplete="off">
+
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" 
+                     id="name" 
+                     name="name" 
+                     required
+                     minlength="2"
+                     maxlength="50"
+                     pattern="[a-zA-ZäöüßÄÖÜ\s-]{2,50}"
+                     data-sanitize="true"
+                     autocomplete="name">
+              <div class="error-message" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-Mail *</label>
+              <input type="email" 
+                     id="email" 
+                     name="email" 
+                     required
+                     pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+                     data-sanitize="true"
+                     autocomplete="email">
+              <div class="error-message" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Betreff *</label>
+              <input type="text" 
+                     id="subject" 
+                     name="subject" 
+                     required
+                     maxlength="100"
+                     pattern="[a-zA-Z0-9äöüßÄÖÜ\s-,.!?]{2,100}"
+                     data-sanitize="true">
+              <div class="error-message" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Ihre Nachricht *</label>
+              <textarea id="message" 
+                        name="message" 
+                        required
+                        minlength="10"
+                        maxlength="1000"
+                        data-sanitize="true"
+                        rows="5"></textarea>
+              <div class="error-message" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group checkbox">
+              <input type="checkbox" 
+                     id="privacy" 
+                     name="privacy" 
+                     required>
+              <label for="privacy">
+                Ich stimme der Verarbeitung meiner Daten gemäß der 
+                <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> zu *
+              </label>
+            </div>
+
+            <!-- Rate Limiting Information -->
+            <input type="hidden" 
+                   name="timestamp" 
+                   value="{{ current_timestamp }}">
+
+            <button type="submit" 
+                    class="btn btn-primary"
+                    data-submit-once="true">
+              Nachricht senden
+            </button>
+          </form>
+        </div>
+
+        <!-- Kontaktinformationen -->
+        <div class="contact-info content-card">
+          <h3 class="card-title">So erreichen Sie uns</h3>
+          <div class="info-box">
+            <h4>Adresse</h4>
+            <address>
+              CO2-Footprint Transparenz e.V.<br>
+              Klimastraße 123<br>
+              10115 Berlin
+            </address>
           </div>
-          <div class="form-group">
-            <label for="email">E-Mail:</label>
-            <input type="email" 
-                   id="email" 
-                   name="email" 
-                   required 
-                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                   title="Bitte geben Sie eine gültige E-Mail-Adresse ein">
+
+          <div class="info-box">
+            <h4>Kontaktdaten</h4>
+            <p>
+              Tel: <a href="tel:+49301234567">+49 (0)30 123 456 7</a><br>
+              E-Mail: <a href="mailto:info@co2-transparenz.de">info@co2-transparenz.de</a>
+            </p>
           </div>
-          <div class="form-group">
-            <label for="message">Nachricht:</label>
-            <textarea id="message" 
-                      name="message" 
-                      rows="5" 
-                      required 
-                      maxlength="1000"
-                      title="Bitte geben Sie eine Nachricht ein (maximal 1000 Zeichen)"></textarea>
+
+          <div class="info-box">
+            <h4>Öffnungszeiten</h4>
+            <p>
+              Montag - Freitag: 9:00 - 17:00 Uhr<br>
+              Samstag & Sonntag: geschlossen
+            </p>
           </div>
-          <button type="submit" class="submit-btn">Nachricht senden</button>
-        </form>
+        </div>
+      </div>
+
+      <!-- Karte -->
+      <div class="map-container content-card">
+        <h3 class="card-title">Standort</h3>
+        <div id="map" class="map">
+          <!-- Hier wird die Karte via JavaScript eingefügt -->
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
-    <p>
-      &copy; 2024 CO2-Footprint Transparenz e.V. | 
+    <p>&copy; 2024 CO2-Footprint Transparenz e.V. | 
       <a href="impressum.html">Impressum</a> | 
       <a href="datenschutz.html">Datenschutz</a>
     </p>
   </footer>
+
   <script src="script.js"></script>
   <script src="security.js"></script>
-  <script>
-  function validateForm(event) {
-      event.preventDefault();
-      
-      // Hole die Formularelemente
-      const nameInput = document.getElementById('name');
-      const emailInput = document.getElementById('email');
-      const messageInput = document.getElementById('message');
-      
-      // Validiere Name
-      const nameValue = validiereEingabe(nameInput.value.trim());
-      if (!/^[A-Za-zÄäÖöÜüß\s-]{2,50}$/.test(nameValue)) {
-          alert('Bitte geben Sie einen gültigen Namen ein.');
-          return false;
-      }
-      
-      // Validiere Email
-      const emailValue = validiereEingabe(emailInput.value.trim());
-      if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailValue)) {
-          alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
-          return false;
-      }
-      
-      // Validiere Nachricht
-      const messageValue = validiereEingabe(messageInput.value.trim());
-      if (messageValue.length < 1 || messageValue.length > 1000) {
-          alert('Bitte geben Sie eine Nachricht ein (maximal 1000 Zeichen).');
-          return false;
-      }
-      
-      // Wenn alles valid ist, können die Daten sicher verarbeitet werden
-      sendFormData({
-          name: nameValue,
-          email: emailValue,
-          message: messageValue
-      });
-      
-      return false;
-  }
-
-  function sendFormData(data) {
-      // Hier würde der Code zum sicheren Senden der Daten an den Server stehen
-      console.log('Validierte Daten:', data);
-      alert('Vielen Dank für Ihre Nachricht!');
-      document.querySelector('.contact-form').reset();
-  }
-  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
 </body>
 </html> 

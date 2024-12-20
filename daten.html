@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unsere Daten - CO2-Footprint Transparenz</title>
+  <meta name="description" content="CO2-Emissionen und ihre Auswirkungen - Verständlich erklärt mit Vergleichen und Handlungsempfehlungen">
+  <title>CO2-Auswirkungen - CO2-Footprint Transparenz</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,69 +19,145 @@
     <nav>
       <ul>
         <li><a href="index.html">Startseite</a></li>
-        <li><a href="daten.html">Daten</a></li>
+        <li><a href="daten.html" class="active">Daten</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
         <li><a href="newsletter.html">Newsletter</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="data-overview">
-      <h2>Unsere Datenerhebung</h2>
-      
-      <div class="info-card">
-        <h3>Wie wir Daten sammeln</h3>
-        <p>Unsere CO2-Emissionsdaten stammen aus verschiedenen vertrauenswürdigen Quellen:</p>
-        <ul>
-          <li>Offizielle Nachhaltigkeitsberichte der Unternehmen</li>
-          <li>Staatliche Umweltbehörden</li>
-          <li>Unabhängige Umweltprüforganisationen</li>
-          <li>Wissenschaftliche Studien</li>
-        </ul>
-      </div>
-
-      <div class="info-card">
-        <h3>CO2 im Vergleich</h3>
-        <p>Um die CO2-Emissionen besser einordnen zu können, hier einige Vergleiche:</p>
-        <div class="comparison-grid">
-          <div class="comparison-item">
-            <h4>1 Tonne CO2 entspricht:</h4>
-            <ul>
-              <li>5.000 km Autofahrt</li>
-              <li>Einem Flug von Berlin nach Rom</li>
-              <li>Dem jährlichen Heizverbrauch von 50m² Wohnfläche</li>
-            </ul>
-          </div>
-          <div class="comparison-item">
-            <h4>Jährlicher CO2-Ausstoß:</h4>
-            <ul>
-              <li>Durchschnittsperson in Deutschland: 11,2 Tonnen</li>
-              <li>Ein Baum bindet: 12,5 kg</li>
-              <li>Ein Kleinwagen: 2 Tonnen</li>
-            </ul>
-          </div>
+  <main class="container">
+    <section class="impact-section content-section">
+        <div class="section-header">
+            <h2>CO2-Auswirkungen im Kontext</h2>
+            <p class="section-description">
+                Entdecken Sie die konkreten Auswirkungen von CO2-Emissionen und deren Bedeutung für unseren Alltag und die Umwelt.
+            </p>
         </div>
-      </div>
-
-      <div class="info-card">
-        <h3>Unsere Methodik</h3>
-        <p>Wir verwenden internationale Standards zur CO2-Bilanzierung:</p>
-        <ul>
-          <li>Greenhouse Gas Protocol (GHG)</li>
-          <li>ISO 14064 zur Treibhausgasberechnung</li>
-          <li>Science Based Targets Initiative (SBTi)</li>
-        </ul>
-      </div>
-
-      <div class="info-card action-card">
-        <h3>Aktiv werden</h3>
-        <p>Möchten Sie mehr über CO2-Emissionen erfahren oder aktiv werden?</p>
-        <div class="action-buttons">
-          <a href="kontakt.html" class="cta-button">Kontaktieren Sie uns</a>
-          <a href="#" class="cta-button secondary">Newsletter abonnieren</a>
+        
+        <!-- Tägliche Vergleiche -->
+        <div class="impact-card content-card">
+            <h3 class="card-title">CO2 im Alltag</h3>
+            <div class="comparison-grid card-content">
+                <div class="comparison-item info-box">
+                    <h4>Autofahrt</h4>
+                    <p class="highlight">Eine Tonne CO2 entspricht:</p>
+                    <ul class="info-list">
+                        <li>4.000 km Autofahrt (Mittelklassewagen)</li>
+                        <li>≈ Strecke Berlin → Madrid und zurück</li>
+                        <li>167 Liter Benzinverbrauch</li>
+                    </ul>
+                </div>
+                <div class="comparison-item info-box">
+                    <h4>Flugverkehr</h4>
+                    <p class="highlight">Eine Tonne CO2 entspricht:</p>
+                    <ul class="info-list">
+                        <li>Einem Flug Frankfurt → New York (Economy)</li>
+                        <li>5 Flügen Berlin → München</li>
+                        <li>2.500 km Flugstrecke pro Person</li>
+                    </ul>
+                </div>
+                <div class="comparison-item info-box">
+                    <h4>Haushalt</h4>
+                    <p class="highlight">Eine Tonne CO2 entspricht:</p>
+                    <ul class="info-list">
+                        <li>2 Monate Energieverbrauch (4-Personen-Haushalt)</li>
+                        <li>1 Jahr Stromverbrauch einer Person</li>
+                        <li>450m² Wohnfläche heizen (pro Monat)</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <!-- Umweltauswirkungen -->
+        <div class="impact-card content-card">
+            <h3 class="card-title">Auswirkungen auf die Umwelt</h3>
+            <div class="environment-grid card-content">
+                <div class="environment-item info-box">
+                    <h4>Arktis & Antarktis</h4>
+                    <p class="highlight">Eine Tonne CO2 bewirkt:</p>
+                    <ul class="info-list">
+                        <li>3m³ Eisschmelze in der Arktis</li>
+                        <li>0,3m² Verlust an Permafrost</li>
+                        <li>Beiträge zur Polareisschmelze</li>
+                    </ul>
+                </div>
+                <div class="environment-item info-box">
+                    <h4>Ozeane</h4>
+                    <p class="highlight">Eine Tonne CO2 bewirkt:</p>
+                    <ul class="info-list">
+                        <li>Versauerung von 30.000 Litern Meerwasser</li>
+                        <li>0,000000001mm Meeresspiegelanstieg</li>
+                        <li>Gefährdung mariner Ökosysteme</li>
+                    </ul>
+                </div>
+                <div class="environment-item info-box">
+                    <h4>Wälder & Vegetation</h4>
+                    <p class="highlight">Kompensation durch:</p>
+                    <ul class="info-list">
+                        <li>80 ausgewachsene Bäume (pro Jahr)</li>
+                        <li>1.000m² Waldfläche</li>
+                        <li>12 Monate Wachstumszeit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Langzeitfolgen -->
+        <div class="impact-card content-card">
+            <h3 class="card-title">Langzeitfolgen für das Klima</h3>
+            <div class="timeline-container card-content">
+                <div class="timeline-item info-box">
+                    <h4>Kurzfristig (1-5 Jahre)</h4>
+                    <ul class="info-list">
+                        <li>Lokale Temperaturerhöhung</li>
+                        <li>Verstärkung von Wetterextremen</li>
+                        <li>Beeinträchtigung der Luftqualität</li>
+                    </ul>
+                </div>
+                <div class="timeline-item info-box">
+                    <h4>Mittelfristig (5-20 Jahre)</h4>
+                    <ul class="info-list">
+                        <li>Veränderung von Niederschlagsmustern</li>
+                        <li>Zunahme von Dürreperioden</li>
+                        <li>Verlust von Biodiversität</li>
+                    </ul>
+                </div>
+                <div class="timeline-item info-box">
+                    <h4>Langfristig (20+ Jahre)</h4>
+                    <ul class="info-list">
+                        <li>Permanente Klimazonenverschiebung</li>
+                        <li>Irreversible Ökosystemschäden</li>
+                        <li>Gefährdung der Nahrungssicherheit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Handlungsempfehlungen -->
+        <div class="impact-card content-card">
+            <h3 class="card-title">Was können wir tun?</h3>
+            <div class="action-grid card-content">
+                <div class="action-item info-box">
+                    <h4>Individuelle Maßnahmen</h4>
+                    <ul class="info-list">
+                        <li>Nutzung öffentlicher Verkehrsmittel</li>
+                        <li>Energieeffiziente Haushaltsführung</li>
+                        <li>Reduzierung des Fleischkonsums</li>
+                        <li>Verwendung erneuerbarer Energien</li>
+                    </ul>
+                </div>
+                <div class="action-item info-box">
+                    <h4>Unternehmerische Maßnahmen</h4>
+                    <ul class="info-list">
+                        <li>Umstellung auf nachhaltige Produktion</li>
+                        <li>Investition in grüne Technologien</li>
+                        <li>Optimierung der Lieferketten</li>
+                        <li>CO2-Kompensationsprogramme</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
   </main>
 
@@ -90,6 +167,7 @@
       <a href="datenschutz.html">Datenschutz</a>
     </p>
   </footer>
+
   <script src="script.js"></script>
   <script src="security.js"></script>
 </body>

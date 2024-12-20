@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CO2-Footprint Transparenz - Wir machen Klimabilanzen von Unternehmen transparent und verständlich.">
-  <meta name="keywords" content="CO2, Klimabilanz, Nachhaltigkeit, Transparenz, Umweltschutz">
+  <meta name="description" content="CO2-Emissionen Transparenz - Vergleichen Sie Unternehmen und ihre Klimabilanzen">
+  <meta name="keywords" content="CO2, Klimabilanz, Nachhaltigkeit, Umwelt">
   <meta name="author" content="CO2-Footprint Transparenz e.V.">
   
   <!-- Open Graph Tags für Social Media -->
-  <meta property="og:title" content="CO2-Footprint Transparenz">
-  <meta property="og:description" content="Wir machen Klimabilanzen transparent">
+  <meta property="og:title" content="CO2-Emissionen Transparenz">
+  <meta property="og:description" content="Vergleichen Sie Unternehmens-Klimabilanzen">
   <meta property="og:image" content="assets/og-image.jpg">
-  <meta property="og:url" content="https://ihre-domain.de">
+  <meta property="og:url" content="https://ihre-domain.de/co2-bilanz">
   
   <title>CO2-Footprint Transparenz - Startseite</title>
-  <link rel="canonical" href="https://ihre-domain.de">
+  <link rel="canonical" href="https://ihre-domain.de/co2-bilanz">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -55,16 +55,13 @@
             <button class="export-btn" onclick="exportToCsv()">Export CSV</button>
           </div>
           <div class="table-wrapper">
-            <table id="emissions-table">
-              <thead>
-                <tr>
-                  <th>
-                    <div class="table-header">
-                      <span>Land</span>
-                      <button class="sort-btn" data-column="land">
-                        <i class="sort-icon"></i>
-                      </button>
-                    </div>
+            <table id="emissions-table" role="grid" aria-label="CO2-Emissionen Übersicht">
+              <thead role="rowgroup">
+                <tr role="row">
+                  <th role="columnheader" aria-sort="none">
+                    <button class="sort-btn" aria-label="Sortiere nach Land">
+                      Land
+                    </button>
                   </th>
                   <th>
                     <div class="table-header">
@@ -88,16 +85,38 @@
             </table>
           </div>
         </div>
-        <div class="data-explanation">
-          <h3>Über unsere Daten</h3>
-          <p>Die hier dargestellten Daten werden monatlich aktualisiert und stammen aus folgenden Quellen:</p>
-          <ul>
-            <li>Offizielle Unternehmensberichte</li>
-            <li>Nationale Umweltbehörden</li>
-            <li>Unabhängige Umweltprüfungen</li>
-          </ul>
-          <p>Alle Emissionswerte werden in metrischen Tonnen CO2-Äquivalent angegeben.</p>
-        </div>
+        <section class="data-description">
+            <h2>Über unsere Daten</h2>
+            <p>
+                Unsere CO2-Emissionsdaten werden sorgfältig aus verschiedenen verifizierten Quellen zusammengetragen. 
+                Die Hauptquellen umfassen:
+            </p>
+            <ul>
+                <li>Offizielle Nachhaltigkeitsberichte der Unternehmen</li>
+                <li>Veröffentlichte ESG-Reports (Environmental, Social, Governance)</li>
+                <li>Zertifizierte Umweltgutachten</li>
+                <li>Nationale Emissionsregister</li>
+            </ul>
+            <p>
+                Die Daten werden vierteljährlich aktualisiert und durchlaufen einen mehrstufigen Validierungsprozess. 
+                Dabei berücksichtigen wir sowohl direkte Emissionen (Scope 1) als auch indirekte Emissionen aus 
+                zugekaufter Energie (Scope 2).
+            </p>
+            <p>
+                Zur Gewährleistung der Datenqualität:
+            </p>
+            <ul>
+                <li>Überprüfung durch unabhängige Umweltgutachter</li>
+                <li>Abgleich mit historischen Daten zur Erkennung von Anomalien</li>
+                <li>Standardisierte Berechnungsmethoden nach GHG-Protokoll</li>
+                <li>Transparente Dokumentation der Datenquellen</li>
+            </ul>
+            <p>
+                Die angezeigten CO2-Emissionen werden in metrischen Tonnen (t) angegeben und 
+                beziehen sich auf das jeweils angegebene Berichtsjahr. Unternehmen können ihre 
+                Daten nach Verifizierung durch unsere Experten aktualisieren lassen.
+            </p>
+        </section>
       </div>
     </section>
   </main>

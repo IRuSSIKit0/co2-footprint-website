@@ -34,13 +34,15 @@ header, footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--spacing-lg);
-    padding: var(--spacing-md);
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    background-color: white;
 }
 
 .logo {
-    width: 150px;
-    height: 150px;
+    width: 50px;
+    height: 50px;
     transition: transform 0.3s ease;
 }
 
@@ -612,112 +614,89 @@ textarea {
 
 /* Newsletter Formular Styles */
 .newsletter-section {
-    max-width: 600px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: var(--spacing-lg);
+    padding: 2rem;
 }
 
-.form-container {
-    background: white;
-    padding: var(--spacing-lg);
-    border-radius: 8px;
-    box-shadow: var(--shadow-sm);
+.newsletter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
 }
 
-.form-group {
-    margin-bottom: var(--spacing-md);
+.newsletter-form {
+    padding: 2rem;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: var(--spacing-sm);
-    color: var(--text-dark);
+.newsletter-preview {
+    padding: 2rem;
 }
 
-.form-group input[type="email"],
-.form-group input[type="text"] {
-    width: 100%;
-    padding: var(--spacing-sm);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    transition: var(--transition-default);
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-md);
-}
-
-.checkbox-group {
+.preview-content {
     display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-sm);
+    flex-direction: column;
+    gap: 2rem;
 }
 
-.checkbox-group input[type="checkbox"] {
-    margin-top: 0.25rem;
+.newsletter-example {
+    margin: 1rem 0;
 }
 
-.submit-btn {
-    background: var(--primary-color);
-    color: var(--text-light);
-    border: none;
-    padding: var(--spacing-sm) var(--spacing-lg);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: var(--transition-default);
+.preview-image {
     width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
 }
 
-.submit-btn:hover:not(:disabled) {
-    opacity: 0.9;
-    transform: translateY(-1px);
-}
-
-.submit-btn:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-/* Honeypot-Feld verstecken */
-.hidden-field {
-    display: none;
-}
-
-/* Formularnachrichten */
-.form-message {
-    margin-top: var(--spacing-md);
-    padding: var(--spacing-sm);
-    border-radius: 4px;
-    text-align: center;
-}
-
-.form-message.error {
-    background-color: #fee;
-    color: #c00;
-    border: 1px solid #fcc;
-}
-
-.form-message.success {
-    background-color: #efe;
-    color: #0c0;
-    border: 1px solid #cfc;
-}
-
-.form-message.info {
-    background-color: #f0f0f0;
+.preview-text {
+    font-size: 0.9rem;
     color: #666;
-    border: 1px solid #ddd;
 }
 
+.benefits li {
+    color: #004d40;
+    font-weight: 500;
+}
+
+.faq-section {
+    margin-top: 2rem;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.faq-item {
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.faq-item h4 {
+    color: #004d40;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Anpassungen */
 @media (max-width: 768px) {
-    .newsletter-section {
-        padding: var(--spacing-md);
+    .newsletter-grid {
+        grid-template-columns: 1fr;
     }
-    
-    .form-container {
-        padding: var(--spacing-md);
+
+    .newsletter-form,
+    .newsletter-preview {
+        padding: 1.5rem;
+    }
+
+    .faq-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -836,5 +815,639 @@ textarea {
     align-items: center;
     justify-content: space-between;
   }
+}
+
+/* Moderne Styling-Elemente */
+.table-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.highlight-row {
+    transition: background-color 0.3s;
+}
+
+.highlight-row:hover {
+    background-color: rgba(0,77,64,0.1);
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-light: #1a1a1a;
+        --text-light: #ffffff;
+        --text-dark: #e0e0e0;
+    }
+}
+
+/* Styling für den Text-Container */
+.data-description {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    margin: 3rem auto;
+    max-width: 800px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.data-description h2 {
+    color: #004d40;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #004d40;
+    padding-bottom: 0.5rem;
+}
+
+.data-description p {
+    color: #2c3e50;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.data-description ul {
+    margin: 1rem 0 2rem 1.5rem;
+    color: #2c3e50;
+}
+
+.data-description li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.data-description li::before {
+    content: "•";
+    color: #004d40;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .data-description {
+        padding: 1.5rem;
+        margin: 2rem 1rem;
+    }
+
+    .data-description h2 {
+        font-size: 1.5rem;
+    }
+
+    .data-description p {
+        font-size: 1rem;
+    }
+}
+
+/* Styling für die Daten-Seite */
+.data-section {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    margin: 3rem auto;
+    max-width: 1200px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table-container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+/* Tabellen-Header Styling */
+#emissions-table th {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    font-weight: 600;
+}
+
+/* Zebra-Streifen für die Tabelle */
+#emissions-table tr:nth-child(even) {
+    background-color: rgba(0, 77, 64, 0.05);
+}
+
+#emissions-table tr:nth-child(odd) {
+    background-color: white;
+}
+
+/* Hover-Effekt für Tabellenzeilen */
+#emissions-table tr:hover {
+    background-color: rgba(0, 77, 64, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .data-section {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+    }
+    
+    .table-container {
+        padding: 0.5rem;
+        margin-top: 1rem;
+    }
+}
+
+/* Visualisierungssektion */
+.visualization-section {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    margin: 3rem auto;
+    max-width: 1200px;
+}
+
+.chart-container {
+    height: 400px;
+    margin: 2rem 0;
+}
+
+/* Vergleichssektion */
+.comparison-section {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    margin: 3rem auto;
+    max-width: 1200px;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.comparison-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.comparison-card h3 {
+    color: #004d40;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.comparison-list {
+    list-style: none;
+    padding: 0;
+}
+
+.comparison-list li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.comparison-list li:first-child {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.impact-info {
+    margin-top: 1rem;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Hauptstyling für die Impact-Sektion */
+.impact-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.impact-section h1 {
+    color: #004d40;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+/* Styling für die Karten */
+.impact-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+    padding: 2rem;
+}
+
+.impact-card h2 {
+    color: #004d40;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+/* Grid Layouts mit weißem Hintergrund */
+.comparison-grid,
+.environment-grid,
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    background-color: white;
+}
+
+/* Einzelne Items */
+.comparison-item,
+.environment-item,
+.action-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.comparison-item:hover,
+.environment-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Icons */
+.comparison-item img,
+.environment-item img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* Optional: Hover-Effekt für die Icons */
+.comparison-item img:hover,
+.environment-item img:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+/* Listen */
+.impact-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.impact-card li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.impact-card li::before {
+    content: "•";
+    color: #004d40;
+    position: absolute;
+    left: 0;
+}
+
+/* Timeline Styling */
+.timeline-container {
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.timeline-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.timeline-item h3 {
+    color: #004d40;
+    margin-bottom: 1rem;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .impact-section {
+        padding: 1rem;
+    }
+
+    .impact-card {
+        padding: 1.5rem;
+    }
+
+    .comparison-grid,
+    .environment-grid,
+    .action-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .impact-section h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Animationen */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.impact-card {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Zusätzliche visuelle Verbesserungen */
+.comparison-item h3,
+.environment-item h3,
+.action-item h3 {
+    color: #004d40;
+    margin: 1rem 0;
+    font-size: 1.3rem;
+}
+
+.impact-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Header Styling */
+header {
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-main {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    display: block; /* Stellt sicher, dass das Logo sichtbar ist */
+}
+
+.header-main h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #004d40;
+}
+
+/* Navigation Styling */
+nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav a {
+    color: #004d40;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #00796b;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .header-main {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Kontaktseiten-spezifische Styles */
+.contact-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contact-form {
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #004d40;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #004d40;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 77, 64, 0.2);
+}
+
+.form-group.checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.form-group.checkbox input {
+    width: auto;
+    margin-top: 0.25rem;
+}
+
+.form-group.checkbox label {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.contact-info {
+    padding: 2rem;
+}
+
+.info-box {
+    margin-bottom: 2rem;
+}
+
+.info-box h4 {
+    color: #004d40;
+    margin-bottom: 1rem;
+}
+
+.info-box address {
+    font-style: normal;
+    line-height: 1.6;
+}
+
+.info-box a {
+    color: #004d40;
+    text-decoration: none;
+}
+
+.info-box a:hover {
+    text-decoration: underline;
+}
+
+.map-container {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.map {
+    width: 100%;
+    height: 400px;
+    border-radius: 8px;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form,
+    .contact-info {
+        padding: 1.5rem;
+    }
+
+    .map {
+        height: 300px;
+    }
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #004d40;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #00695c;
+}
+
+/* Legal Pages Styling */
+.legal-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.legal-content {
+    padding: 2rem;
+}
+
+.legal-group {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.legal-group:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.legal-group h3 {
+    color: #004d40;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.legal-group p {
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.legal-group a {
+    color: #004d40;
+    text-decoration: none;
+}
+
+.legal-group a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .legal-section {
+        padding: 1rem;
+    }
+
+    .legal-content {
+        padding: 1.5rem;
+    }
+
+    .legal-group {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
 }
   

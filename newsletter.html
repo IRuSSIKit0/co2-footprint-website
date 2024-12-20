@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Newsletter Anmeldung - CO2-Footprint Transparenz</title>
+  <meta name="description" content="Abonnieren Sie unseren Newsletter für aktuelle Informationen zu CO2-Emissionen und Klimaschutz">
+  <title>Newsletter - CO2-Footprint Transparenz</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,64 +21,158 @@
         <li><a href="index.html">Startseite</a></li>
         <li><a href="daten.html">Daten</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="newsletter.html">Newsletter</a></li>
+        <li><a href="newsletter.html" class="active">Newsletter</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="newsletter-section">
-      <h2>Newsletter Anmeldung</h2>
-      <div class="form-container">
-        <form id="newsletterForm" action="/api/newsletter" method="POST" class="secure-form">
-          <!-- CSRF Token (wird durch JS gesetzt) -->
-          <input type="hidden" name="csrf_token" id="csrf_token">
-          
-          <div class="form-group">
-            <label for="email">E-Mail Adresse</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email" 
-              required 
-              maxlength="100"
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-              autocomplete="email">
-          </div>
+  <main class="container">
+    <section class="newsletter-section content-section">
+      <div class="section-header">
+        <h2>Newsletter Anmeldung</h2>
+        <p class="section-description">
+          Bleiben Sie informiert über aktuelle Entwicklungen im Bereich CO2-Emissionen und Klimaschutz.
+          Unser Newsletter erscheint monatlich und ist kostenlos.
+        </p>
+      </div>
 
-          <div class="form-group">
-            <label for="name">Name (optional)</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name" 
-              maxlength="50"
-              pattern="[A-Za-zÄäÖöÜüß\s-]{0,50}"
-              autocomplete="name">
-          </div>
+      <div class="newsletter-grid">
+        <!-- Anmeldeformular -->
+        <div class="newsletter-form content-card">
+          <h3 class="card-title">Jetzt anmelden</h3>
+          <form id="newsletterForm" 
+                action="/api/newsletter" 
+                method="POST" 
+                class="secure-form"
+                autocomplete="off"
+                novalidate>
+            
+            <!-- CSRF Protection -->
+            <input type="hidden" 
+                   name="csrf_token" 
+                   value="{{ csrf_token }}">
+            
+            <!-- Honeypot-Falle -->
+            <input type="text" 
+                   name="website" 
+                   style="display:none" 
+                   tabindex="-1" 
+                   autocomplete="off">
 
-          <div class="form-group checkbox-group">
-            <input 
-              type="checkbox" 
-              id="datenschutz" 
-              name="datenschutz" 
-              required>
-            <label for="datenschutz">
-              Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und stimme zu
-            </label>
-          </div>
+            <div class="form-group">
+              <label for="newsletter-name">Name *</label>
+              <input type="text" 
+                     id="newsletter-name" 
+                     name="name" 
+                     required
+                     minlength="2"
+                     maxlength="50"
+                     pattern="[a-zA-ZäöüßÄÖÜ\s-]{2,50}"
+                     data-sanitize="true"
+                     autocomplete="name">
+              <div class="error-message" aria-live="polite"></div>
+            </div>
 
-          <!-- Honeypot-Feld gegen Spam -->
-          <div class="hidden-field">
-            <input type="text" name="website" tabindex="-1" autocomplete="off">
-          </div>
+            <div class="form-group">
+              <label for="newsletter-email">E-Mail *</label>
+              <input type="email" 
+                     id="newsletter-email" 
+                     name="email" 
+                     required
+                     pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+                     data-sanitize="true"
+                     autocomplete="email">
+              <div class="error-message" aria-live="polite"></div>
+            </div>
 
-          <div class="form-group">
-            <button type="submit" class="submit-btn" id="submitBtn">Anmelden</button>
-          </div>
+            <div class="form-group checkbox">
+              <input type="checkbox" 
+                     id="newsletter-privacy" 
+                     name="privacy" 
+                     required>
+              <label for="newsletter-privacy">
+                Ich stimme dem Erhalt des Newsletters und der Verarbeitung meiner Daten gemäß der 
+                <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> zu *
+              </label>
+            </div>
 
-          <div id="formMessage" class="form-message" role="alert" aria-live="polite"></div>
-        </form>
+            <!-- Double Opt-In Information -->
+            <input type="hidden" 
+                   name="confirmation_type" 
+                   value="double_opt_in">
+
+            <!-- Rate Limiting Information -->
+            <input type="hidden" 
+                   name="timestamp" 
+                   value="{{ current_timestamp }}">
+
+            <button type="submit" 
+                    class="btn btn-primary"
+                    data-submit-once="true">
+              Newsletter abonnieren
+            </button>
+          </form>
+        </div>
+
+        <!-- Newsletter Vorschau -->
+        <div class="newsletter-preview content-card">
+          <h3 class="card-title">Das erwartet Sie</h3>
+          <div class="preview-content">
+            <div class="info-box">
+              <h4>Monatliche Themen</h4>
+              <ul class="info-list">
+                <li>Aktuelle CO2-Emissions-Statistiken</li>
+                <li>Neue Forschungsergebnisse</li>
+                <li>Praktische Klimaschutztipps</li>
+                <li>Interviews mit Experten</li>
+              </ul>
+            </div>
+
+            <div class="info-box">
+              <h4>Beispiel-Newsletter</h4>
+              <div class="newsletter-example">
+                <img src="assets/newsletter-preview.jpg" alt="Newsletter Vorschau" class="preview-image">
+                <p class="preview-text">
+                  Unser letzter Newsletter behandelte das Thema "CO2-Reduktion im Alltag" 
+                  mit praktischen Tipps und Experteninterviews.
+                </p>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <h4>Ihre Vorteile</h4>
+              <ul class="info-list benefits">
+                <li>Monatliche Ausgabe</li>
+                <li>Exklusive Inhalte</li>
+                <li>Kostenlos</li>
+                <li>Jederzeit kündbar</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Sektion -->
+      <div class="faq-section content-card">
+        <h3 class="card-title">Häufig gestellte Fragen</h3>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h4>Wie oft erscheint der Newsletter?</h4>
+            <p>Unser Newsletter erscheint einmal im Monat, in der Regel am ersten Montag.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Kann ich den Newsletter abbestellen?</h4>
+            <p>Ja, Sie können den Newsletter jederzeit mit einem Klick in der E-Mail abbestellen.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Sind meine Daten sicher?</h4>
+            <p>Wir behandeln Ihre Daten vertraulich und geben sie nicht an Dritte weiter.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Entstehen Kosten?</h4>
+            <p>Nein, unser Newsletter ist und bleibt kostenlos.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -89,7 +184,6 @@
     </p>
   </footer>
 
-  <script src="newsletter.js"></script>
   <script src="script.js"></script>
   <script src="security.js"></script>
 </body>
